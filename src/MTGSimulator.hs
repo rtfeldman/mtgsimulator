@@ -21,7 +21,9 @@ countSymbols :: [Mana] -> ManaCounts
 countSymbols = foldl addToManaCounts emptyManaCounts
 
 castableWith :: [Mana] -> [Mana] -> Bool
-castableWith cost available =
-  True
+castableWith available cost = all hasAdequateManaFor $ Map.keys costCounts
   where costCounts      = countSymbols cost
         availableCounts = countSymbols available
+        hasAdequateManaFor symbol = amountAvailable >= amountNeeded
+          where amountAvailable = countBySymbol symbol availableCounts
+                amountNeeded    = countBySymbol symbol costCounts
