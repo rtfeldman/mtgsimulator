@@ -1,6 +1,3 @@
-{-# LANGUAGE DataKinds, FlexibleContexts, KindSignatures,
-             PolyKinds, TypeFamilies, TypeOperators, GADTs #-}
-
 module MTGSimulator where
 
 import Control.Applicative
